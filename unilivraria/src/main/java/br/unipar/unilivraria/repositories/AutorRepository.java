@@ -11,6 +11,11 @@ import java.sql.SQLException;
 
 public class AutorRepository {
 
+    //editar
+    //excluir
+    //listar
+    //buscarPorNome
+
     private static final String INSERT =
             "insert into autor (nome) values (?)";
 
@@ -24,12 +29,22 @@ public class AutorRepository {
 
             conn = new ConnectionFactory().getConnection();
 
+            pstmt = conn.prepareStatement(INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
+            pstmt.setString(1, autor.getNome());
+            pstmt.executeUpdate();
+
+            rs = pstmt.getGeneratedKeys();
+
+            rs.next();
+            autor.setId(rs.getInt(1));
+
         } finally {
             if (pstmt != null) pstmt.close();
             if (rs != null) rs.close();
             if (conn != null) conn.close();
         }
 
+        return autor;
     }
 
 }
