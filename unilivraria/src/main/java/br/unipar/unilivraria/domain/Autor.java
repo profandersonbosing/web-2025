@@ -8,6 +8,8 @@ public class Autor {
 
     private String nome;
 
+    public Autor() { }
+
     public Autor(AutorInsertRequestDTO autorDTO) {
         this.nome = autorDTO.getNome();
     }
