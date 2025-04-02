@@ -11,7 +11,7 @@ import jakarta.jws.WebService;
 
 import java.util.List;
 
-@WebService
+@WebService(endpointInterface = "br.unipar.unilivraria.interfaces.AutorWS")
 public class AutorWSImp implements AutorWS {
 
     @Override

@@ -13,9 +13,6 @@ import java.util.List;
 
 public class AutorRepository {
 
-    //excluir
-    //buscarPorNome
-
     private static final String INSERT =
             "insert into autor (nome) values (?)";
 
