@@ -18,6 +18,9 @@ public class AutorController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Autor> findAll(@QueryParam("nome") String nome) throws BusinessException {
+        //200 - tudo certo
+        //400 - erro de validação
+        //500 - erro interno
 
         List<Autor> listaAutores = new ArrayList<Autor>();
 
@@ -35,6 +38,11 @@ public class AutorController {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Autor findById(@PathParam("id") Integer id) throws BusinessException {
+        //200 - tudo certo
+        //404 - não encontrado
+        //400 - erro de validação
+        //500 - erro interno
+
         AutorService autorService = new AutorService();
         return new Autor();//autorService.buscarPorId(id);
     }
@@ -80,6 +88,11 @@ public class AutorController {
     @Path("{id}")
     public Autor update(@PathParam("id") Integer id,
                         AutorInsertRequestDTO autorInsertRequestDTO) throws BusinessException {
+        //200 - tudo certo
+        //404 - não encontrado
+        //400 - erro de validação
+        //500 - erro interno
+
         AutorService autorService = new AutorService();
         Autor autor = new Autor(id, autorInsertRequestDTO);
 
@@ -89,6 +102,11 @@ public class AutorController {
     @DELETE
     @Path("{id}")
     public void delete(@PathParam("id") Integer id) throws BusinessException {
+        //404 - não encontrado
+        //204 - tudo certo
+        //400 - erro de validação
+        //500 - erro interno
+
         AutorService autorService = new AutorService();
         autorService.deletar(id);
     }
