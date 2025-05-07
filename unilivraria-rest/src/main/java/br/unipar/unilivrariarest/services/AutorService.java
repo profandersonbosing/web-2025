@@ -16,7 +16,7 @@ public class AutorService {
         autorRepository = new AutorRepository();
     }
 
-    public Autor inserir(Autor autor) throws BusinessException {
+    public Autor inserir(Autor autor) throws BusinessException, SQLException, NamingException {
 
         if (autor.getNome() == null || autor.getNome().isEmpty()) {
             throw new BusinessException("Nome do autor é obrigatório");
@@ -26,12 +26,7 @@ public class AutorService {
             throw new BusinessException("Nome do autor deve ter no máximo 100 caracteres");
         }
 
-        try {
-            return autorRepository.inserir(autor);
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new BusinessException("Erro ao inserir autor. Entre o contato com o suporte do WebService");
-        }
+        return autorRepository.inserir(autor);
     }
 
     public Autor editar(Autor autor) throws BusinessException {
